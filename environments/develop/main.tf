@@ -25,5 +25,6 @@ module "vnet-dev-001" {
   vnet_location      = var.rg_location
   rg_name            = "rg-dev-001"
   vnet_address_space = ["10.20.0.0/16"]
+  depends_on         = [module.rg-dev-001]
 
 }
