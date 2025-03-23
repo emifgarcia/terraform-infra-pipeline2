@@ -40,6 +40,7 @@ jobs:
           -backend-config="storage_account_name=${{ secrets.TF_BACKEND_STORAGE_ACCOUNT_NAME }}" \
           -backend-config="container_name=${{ secrets.TF_BACKEND_CONTAINER_NAME }}" \
           -backend-config="key=${{ secrets.TF_BACKEND_KEY }}"
+      working-directory: ./environments/develop  # Ajuste o diretório de acordo com a sua estrutura
 
     # Validar a configuração do Terraform
     - name: Terraform Validate
