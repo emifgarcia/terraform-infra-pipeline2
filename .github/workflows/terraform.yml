@@ -42,6 +42,7 @@ jobs:
           -backend-config="key=${{ secrets.TF_BACKEND_KEY }}"
       working-directory: ./environments/develop  # Ajuste o diretório de acordo com a sua estrutura
 
+    # Atualiza o estado do Terraform
     - name: Terraform Refresh
       run: terraform refresh
       working-directory: ./environments/develop
