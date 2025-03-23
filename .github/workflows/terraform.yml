@@ -11,7 +11,7 @@ jobs:
 
     permissions:
       id-token: write
-    
+          
     steps:
     # Checkout do repositório
     - name: Checkout code
@@ -44,16 +44,19 @@ jobs:
     # Validar a configuração do Terraform
     - name: Terraform Validate
       run: terraform validate
+      working-directory: ./environments/development  # Ajuste o diretório de acordo com a sua estrutura
     
     # Realizar o Terraform Plan
     - name: Terraform Plan
       id: plan
       run: terraform plan -out=tfplan
+      working-directory: ./environments/development
 
     # Aplica as mudanças no Terraform se o Terraform Plan não tiver falhado
     - name: Terraform Apply
       if: success() && github.ref == 'refs/heads/main'  # Garante que o apply só será feito no branch main
       run: terraform apply -auto-approve tfplan
+      working-directory: ./environments/development
 
     # Optional: Salvar o estado no Azure Storage ou outro backend
     - name: Upload Terraform state to Azure (Optional)
@@ -64,6 +67,7 @@ jobs:
           --file terraform.tfstate \
           --name terraform.tfstate \
           --overwrite
+      working-directory: ./environments/development
     
     # Limpar variáveis de ambiente sensíveis
     - name: Cleanup
