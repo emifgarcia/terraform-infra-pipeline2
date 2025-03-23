@@ -38,3 +38,13 @@ module "snet-dev-001" {
   depends_on              = [module.vnet-dev-001]
 
 }
+
+module "snet-dev-002" {
+  source                  = "../../modules/subnet"
+  subnet_name             = "snet-dev-002"
+  rg_name                 = "rg-dev-001"
+  vnet_name               = "vnet-dev-001"
+  subnet_address_prefixes = ["10.20.1.0/24"]
+  #depends_on              = [module.vnet-dev-001]
+
+}
