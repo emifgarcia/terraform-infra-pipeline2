@@ -23,7 +23,7 @@ module "vnet-dev-001" {
   source             = "../../modules/virtual_network"
   vnet_name          = "vnet-dev-001"
   vnet_location      = var.rg_location
-  rg_name            = module.rg-dev-001.rg_name
+  rg_name            = "rg-dev-001"
   vnet_address_space = ["10.20.0.0/16"]
 
 }
